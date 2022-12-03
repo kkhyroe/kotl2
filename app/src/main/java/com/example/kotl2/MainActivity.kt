@@ -50,11 +50,15 @@ class MainActivity : AppCompatActivity(), Communicator {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.button2).visibility = View.INVISIBLE
+        findViewById<Button>(R.id.button).visibility = View.INVISIBLE
         findViewById<Button>(R.id.button).setOnClickListener {
             supportFragmentManager.commit {
                 val frag1 = supportFragmentManager.findFragmentByTag("first")
                 if (frag1 != null) {
+                    val count = supportFragmentManager.backStackEntryCount
+                    for (i in count downTo 0) {
+                        supportFragmentManager.popBackStack()
+                    }
                     replace(R.id.containerView, frag1)
                 }
             }
@@ -65,7 +69,12 @@ class MainActivity : AppCompatActivity(), Communicator {
             supportFragmentManager.commit {
                 val frag2 = supportFragmentManager.findFragmentByTag("second")
                 if (frag2 != null) {
+                    val count = supportFragmentManager.backStackEntryCount
+                    for (i in count downTo 1) {
+                        supportFragmentManager.popBackStack()
+                    }
                     replace(R.id.containerView, frag2)
+                    addToBackStack(null)
                 }
             }
         }
@@ -75,7 +84,12 @@ class MainActivity : AppCompatActivity(), Communicator {
             supportFragmentManager.commit {
                 val frag3 = supportFragmentManager.findFragmentByTag("third")
                 if (frag3 != null) {
+                    val count = supportFragmentManager.backStackEntryCount
+                    for (i in count downTo 2) {
+                        supportFragmentManager.popBackStack()
+                    }
                     replace(R.id.containerView, frag3)
+                    addToBackStack(null)
                 }
             }
         }
@@ -85,7 +99,12 @@ class MainActivity : AppCompatActivity(), Communicator {
             supportFragmentManager.commit {
                 val frag4 = supportFragmentManager.findFragmentByTag("fourth")
                 if (frag4 != null) {
+                    val count = supportFragmentManager.backStackEntryCount
+                    for (i in count downTo 3) {
+                        supportFragmentManager.popBackStack()
+                    }
                     replace(R.id.containerView, frag4)
+                    addToBackStack(null)
                 }
             }
         }
